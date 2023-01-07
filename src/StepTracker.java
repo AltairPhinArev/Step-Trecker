@@ -12,7 +12,8 @@ class StepTracker {
         }
     }
     void changeGoal(){
-         goalByStepsPerDay = scan.nextInt();
+        System.out.println("Введите новую цель");
+        goalByStepsPerDay = scan.nextInt();
     }
     void addNewNumberStepsPerDay() {
         System.out.println("Введите номер месяца");
@@ -23,17 +24,21 @@ class StepTracker {
         }
         System.out.println("Введите день от 1 до 30 (включительно)");
         int day = scan.nextInt();
-        if ((day >  30) || ( day < 1)) {
+        if ((day > 30) || ( day < 1)) {
             System.out.println("Не верный формат дней");
         }
         System.out.println("Введите количество шагов");
         int step = scan.nextInt();
+        if (step < 0){
+            System.out.println("Не верный формат шагов");
+            return;
+        }
         MonthData monthData = monthToData[months];
-        monthData.days[day] = step;
+        monthData.days[day - 1] = step;
     }
         int sumStepsFromMonth(int[] days) {
             int SumStep = 0;
-            for (int i = 0; i < days.length; i++) {
+            for(int i = 0; i < days.length; i++) {
                 SumStep = SumStep + days[i];
             }
             return SumStep;
@@ -60,7 +65,7 @@ class StepTracker {
             System.out.println(converter.ConvertToKkal(sumStepsFromMonth(monthData.days)) + " - " + "Сожженые килокалории за месяц");
             System.out.println(monthData.bestSeries(goalByStepsPerDay)+ " - лучшей серии " +"\n"); //дополнительный перенос строки
             for(int i = 0; i <monthData.days.length; i++) {
-                System.out.print("день " + (i + 1) + " - " + monthData.days[i] + "; ");
+                System.out.println("день " + (i + 1) + " - " + monthData.days[i] + "; ");
             }
            }
 }
