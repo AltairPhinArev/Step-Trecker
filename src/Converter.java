@@ -3,7 +3,7 @@ public class Converter {
     int kalByStep = 50;
      int ConvertToKm(int step){
         int Distance;
-        Distance = (step * DistanceByStep) / 1000;
+        Distance = (step * DistanceByStep) / 100000;
         return Distance;
     }
     int ConvertToKkal(int step){

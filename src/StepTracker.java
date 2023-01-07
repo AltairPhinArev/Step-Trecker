@@ -14,9 +14,12 @@ class StepTracker {
     void changeGoal(){
         System.out.println("Введите новую цель");
         goalByStepsPerDay = scan.nextInt();
+        if(goalByStepsPerDay > 0){
+            return;
+        }
     }
     void addNewNumberStepsPerDay() {
-        System.out.println("Введите номер месяца");
+        System.out.println("Введите номер месяца с 0 до 11");
         int months = scan.nextInt();
         if((months > 11 ) || (months < 1)){
             System.out.println("Не верный формат месяцев");
