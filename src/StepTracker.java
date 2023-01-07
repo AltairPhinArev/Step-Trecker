@@ -13,9 +13,12 @@ class StepTracker {
     }
     void changeGoal(){
         System.out.println("Введите новую цель");
-        goalByStepsPerDay = scan.nextInt();
-        if(goalByStepsPerDay > 0){
+        int NewGoal = scan.nextInt();
+        if(NewGoal < 0){
+            System.out.println("Введен не верный формат цели");
             return;
+        }else{
+            goalByStepsPerDay = NewGoal;
         }
     }
     void addNewNumberStepsPerDay() {
